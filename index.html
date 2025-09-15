@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Название Компании - Инновации и Качество</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">COMPANY</div>
+            <ul class="nav-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#achievements">Достижения</a></li>
+                <li><a href="#team">Команда</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Главный экран -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Добро пожаловать в будущее</h1>
+            <p class="hero-subtitle">Инновационные решения для вашего бизнеса</p>
+            <button class="cta-button">Начать сотрудничество</button>
+        </div>
+        <div class="hero-animation">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+    </section>
+
+    <!-- О компании -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">О нашей компании</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Мы - команда профессионалов с многолетним опытом в индустрии. Наша миссия - предоставлять инновационные решения, которые помогают нашим клиентам достигать новых высот.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="10">0</span>
+                            <span class="stat-label">Лет на рынке</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="500">0</span>
+                            <span class="stat-label">Довольных клиентов</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="1000">0</span>
+                            <span class="stat-label">Завершенных проектов</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/600x400/4A90E2/FFFFFF?text=О+компании" alt="О компании">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Наши услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Аналитика</h3>
+                    <p>Глубокий анализ данных для принятия правильных решений</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💡</div>
+                    <h3>Консалтинг</h3>
+                    <p>Экспертные консультации по развитию вашего бизнеса</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3>Разработка</h3>
+                    <p>Создание инновационных решений под ваши задачи</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>Маркетинг</h3>
+                    <p>Эффективные стратегии продвижения вашего продукта</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Безопасность</h3>
+                    <p>Защита данных и информационная безопасность</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Оптимизация</h3>
+                    <p>Повышение эффективности бизнес-процессов</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Достижения -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <h2 class="section-title">Наши достижения</h2>
+            <div class="chart-container">
+                <canvas id="growthChart"></canvas>
+            </div>
+            <div class="achievements-list">
+                <div class="achievement-item">
+                    <span class="achievement-year">2020</span>
+                    <span class="achievement-text">Запуск компании</span>
+                </div>
+                <div class="achievement-item">
+                    <span class="achievement-year">2021</span>
+                    <span class="achievement-text">100+ клиентов</span>
+                </div>
+                <div class="achievement-item">
+                    <span class="achievement-year">2022</span>
+                    <span class="achievement-text">Международная экспансия</span>
+                </div>
+                <div class="achievement-item">
+                    <span class="achievement-year">2023</span>
+                    <span class="achievement-text">Награда "Лучший стартап года"</span>
+                </div>
+                <div class="achievement-item">
+                    <span class="achievement-year">2024</span>
+                    <span class="achievement-text">500+ довольных клиентов</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Команда -->
+    <section id="team" class="team">
+        <div class="container">
+            <h2 class="section-title">Наша команда</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/300x300/4A90E2/FFFFFF?text=CEO" alt="CEO">
+                    <h3>Иван Иванов</h3>
+                    <p>Генеральный директор</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/300x300/A23B72/FFFFFF?text=CTO" alt="CTO">
+                    <h3>Мария Петрова</h3>
+                    <p>Технический директор</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/300x300/F18F01/FFFFFF?text=CFO" alt="CFO">
+                    <h3>Алексей Сидоров</h3>
+                    <p>Финансовый директор</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/300x300/2D3047/FFFFFF?text=CMO" alt="CMO">
+                    <h3>Елена Козлова</h3>
+                    <p>Директор по маркетингу</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Свяжитесь с нами</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <div>
+                            <h4>Адрес</h4>
+                            <p>г. Москва, ул. Примерная, д. 123</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <div>
+                            <h4>Телефон</h4>
+                            <p>+7 (495) 123-45-67</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">✉️</span>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@company.ru</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Ваше имя" required>
+                    <input type="email" placeholder="Ваш email" required>
+                    <textarea placeholder="Ваше сообщение" rows="5" required></textarea>
+                    <button type="submit">Отправить сообщение</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Название Компании. Все права защищены.</p>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Telegram</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
