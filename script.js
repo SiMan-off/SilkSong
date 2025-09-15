@@ -1,4 +1,4 @@
-// Плавная прокрутка для навигации
+// Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -12,220 +12,39 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Анимация чисел
-function animateNumbers() {
-    const numbers = document.querySelectorAll('.stat-number');
-
-    numbers.forEach(number => {
-        const target = parseInt(number.getAttribute('data-target'));
-        const duration = 2000;
-        const increment = target / (duration / 16);
-        let current = 0;
-
-        const updateNumber = () => {
-            current += increment;
-            if (current < target) {
-                number.textContent = Math.floor(current);
-                requestAnimationFrame(updateNumber);
-            } else {
-                number.textContent = target;
-            }
-        };
-
-        updateNumber();
-    });
-}
-
-// Intersection Observer для анимаций при скролле
-const observerOptions = {
-    threshold: 0.3,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.animation = 'fadeInUp 1s ease forwards';
-
-            // Запускаем анимацию чисел когда секция становится видимой
-            if (entry.target.classList.contains('about')) {
-                animateNumbers();
-            }
-
-            // Анимация графика
-            if (entry.target.classList.contains('achievements')) {
-                createChart();
-            }
-        }
-    });
-}, observerOptions);
-
-// Применяем observer к секциям
-document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
-});
-
-// Создание графика роста
-function createChart() {
-    const ctx = document.getElementById('growthChart');
-    if (!ctx) return;
-
-    // Проверяем, не создан ли уже график
-    if (ctx.chart) return;
-
-    ctx.chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['2020', '2021', '2022', '2023', '2024'],
-            datasets: [{
-                label: 'Рост компании',
-                data: [100, 250, 400, 650, 1000],
-                borderColor: '#4A90E2',
-                backgroundColor: 'rgba(74, 144, 226, 0.1)',
-                borderWidth: 3,
-                tension: 0.4,
-                fill: true,
-                pointRadius: 6,
-                pointBackgroundColor: '#4A90E2',
-                pointBorderColor: '#fff',
-                pointBorderWidth: 2,
-                pointHoverRadius: 8
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            plugins: {
-                legend: {
-                    display: false
-                },
-                tooltip: {
-                    backgroundColor: 'rgba(45, 48, 71, 0.9)',
-                    padding: 12,
-                    cornerRadius: 8,
-                    titleFont: {
-                        size: 14,
-                        weight: '600'
-                    },
-                    bodyFont: {
-                        size: 13
-                    },
-                    callbacks: {
-                        label: function(context) {
-                            return 'Показатель: ' + context.parsed.y + '%';
-                        }
-                    }
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    grid: {
-                        color: 'rgba(0, 0, 0, 0.05)'
-                    },
-                    ticks: {
-                        callback: function(value) {
-                            return value + '%';
-                        },
-                        font: {
-                            size: 12
-                        }
-                    }
-                },
-                x: {
-                    grid: {
-                        display: false
-                    },
-                    ticks: {
-                        font: {
-                            size: 12
-                        }
-                    }
-                }
-            },
-            animation: {
-                duration: 2000,
-                easing: 'easeInOutQuart'
-            }
-        }
-    });
-}
-
-// Мобильное меню
+// Mobile menu toggle
 const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
+const navMenu = document.querySelector('.nav-menu');
 
-if (hamburger) {
+if (hamburger && navMenu) {
     hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
+        navMenu.classList.toggle('active');
         hamburger.classList.toggle('active');
     });
-}
 
-// Параллакс эффект для главного экрана
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-
-    if (hero && scrolled < window.innerHeight) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
-});
-
-// Форма обратной связи
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        // Анимация успешной отправки
-        const button = contactForm.querySelector('button');
-        const originalText = button.textContent;
-
-        button.textContent = 'Отправляется...';
-        button.disabled = true;
-
-        setTimeout(() => {
-            button.textContent = 'Отправлено ✓';
-            button.style.background = '#4CAF50';
-
-            setTimeout(() => {
-                button.textContent = originalText;
-                button.style.background = '';
-                button.disabled = false;
-                contactForm.reset();
-            }, 2000);
-        }, 1500);
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+        });
     });
 }
 
-// Добавляем эффект при наведении на карточки услуг
-document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-10px) scale(1.02)';
-    });
-
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1)';
-    });
-});
-
-// Изменение навбара при скролле
+// Navbar scroll effect
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
+        navbar.classList.add('scrolled');
     } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        navbar.classList.remove('scrolled');
     }
 });
 
-// Активная ссылка в навигации
+// Active navigation link highlighting
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-links a');
+    const navLinks = document.querySelectorAll('.nav-menu a');
 
     let current = '';
     sections.forEach(section => {
@@ -240,48 +59,366 @@ window.addEventListener('scroll', () => {
     navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href').slice(1) === current) {
-            link.style.color = '#4A90E2';
-            link.style.fontWeight = '600';
-        } else {
-            link.style.color = '';
-            link.style.fontWeight = '';
+            link.classList.add('active');
         }
     });
 });
 
-// Инициализация при загрузке страницы
-document.addEventListener('DOMContentLoaded', () => {
-    // Добавляем начальные анимации
-    setTimeout(() => {
-        document.querySelector('.hero-content').style.opacity = '1';
-    }, 100);
+// Media tabs functionality
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
 
-    // Прелоадер (опционально)
-    const loader = document.createElement('div');
-    loader.style.cssText = `
+tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const targetTab = button.getAttribute('data-tab');
+
+        // Remove active class from all buttons and contents
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        // Add active class to clicked button and corresponding content
+        button.classList.add('active');
+        document.getElementById(targetTab).classList.add('active');
+    });
+});
+
+// Gallery lightbox effect
+const galleryItems = document.querySelectorAll('.gallery-item img');
+galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+        createLightbox(item.src, item.alt);
+    });
+});
+
+function createLightbox(src, alt) {
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = `
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <img src="${src}" alt="${alt}">
+        </div>
+    `;
+
+    lightbox.style.cssText = `
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: white;
-        z-index: 9999;
+        background: rgba(0, 0, 0, 0.9);
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: opacity 0.5s;
+        z-index: 10000;
+        animation: fadeIn 0.3s ease;
     `;
-    loader.innerHTML = '<div style="font-size: 2rem; color: #4A90E2;">Загрузка...</div>';
-    document.body.appendChild(loader);
 
-    window.addEventListener('load', () => {
+    const content = lightbox.querySelector('.lightbox-content');
+    content.style.cssText = `
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+    `;
+
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+    closeBtn.style.cssText = `
+        position: absolute;
+        top: -40px;
+        right: 0;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+        z-index: 10001;
+    `;
+
+    const img = lightbox.querySelector('img');
+    img.style.cssText = `
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    `;
+
+    document.body.appendChild(lightbox);
+
+    // Close lightbox
+    closeBtn.addEventListener('click', () => {
+        lightbox.remove();
+    });
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            lightbox.remove();
+        }
+    });
+
+    // Close with Escape key
+    document.addEventListener('keydown', function escapeHandler(e) {
+        if (e.key === 'Escape') {
+            lightbox.remove();
+            document.removeEventListener('keydown', escapeHandler);
+        }
+    });
+}
+
+// Contact form handling
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+
+        // Simulate form submission
+        submitBtn.textContent = 'Отправляется...';
+        submitBtn.disabled = true;
+
         setTimeout(() => {
-            loader.style.opacity = '0';
+            submitBtn.textContent = 'Отправлено ✓';
+            submitBtn.style.background = 'linear-gradient(135deg, #27ae60 0%, #2ecc71 100%)';
+
             setTimeout(() => {
-                loader.remove();
-            }, 500);
-        }, 500);
+                submitBtn.textContent = originalText;
+                submitBtn.style.background = '';
+                submitBtn.disabled = false;
+                this.reset();
+
+                // Show success notification
+                showNotification('Сообщение отправлено!', 'success');
+            }, 2000);
+        }, 1500);
+    });
+}
+
+// Notification system
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+
+    notification.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: ${type === 'success' ? '#27ae60' : '#3498db'};
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        z-index: 10000;
+        animation: slideInRight 0.3s ease;
+        font-weight: 500;
+    `;
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.3s ease forwards';
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 3000);
+}
+
+// Parallax effect for hero section
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const parallaxElements = document.querySelectorAll('.hero-background');
+
+    parallaxElements.forEach(element => {
+        const speed = 0.5;
+        element.style.transform = `translateY(${scrolled * speed}px)`;
     });
 });
 
-console.log('Сайт успешно загружен!');
+// Intersection Observer for animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+
+            // Animate statistics numbers
+            if (entry.target.classList.contains('stat')) {
+                animateNumber(entry.target.querySelector('.stat-number'));
+            }
+        }
+    });
+}, observerOptions);
+
+// Observe elements for animation
+document.querySelectorAll('.news-card, .stat, .gallery-item, .contact-form').forEach(el => {
+    observer.observe(el);
+});
+
+// Number animation
+function animateNumber(element) {
+    const target = parseInt(element.textContent);
+    const duration = 2000;
+    const start = performance.now();
+
+    function updateNumber(currentTime) {
+        const elapsed = currentTime - start;
+        const progress = Math.min(elapsed / duration, 1);
+
+        const current = Math.floor(progress * target);
+        element.textContent = current;
+
+        if (progress < 1) {
+            requestAnimationFrame(updateNumber);
+        } else {
+            element.textContent = target + (target > 99 ? '+' : '');
+        }
+    }
+
+    requestAnimationFrame(updateNumber);
+}
+
+// Easter egg: Konami code
+let konamiCode = [];
+const konamiSequence = [
+    'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+    'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+    'KeyB', 'KeyA'
+];
+
+document.addEventListener('keydown', (e) => {
+    konamiCode.push(e.code);
+    if (konamiCode.length > konamiSequence.length) {
+        konamiCode.shift();
+    }
+
+    if (konamiCode.join(',') === konamiSequence.join(',')) {
+        showEasterEgg();
+        konamiCode = [];
+    }
+});
+
+function showEasterEgg() {
+    const easterEgg = document.createElement('div');
+    easterEgg.innerHTML = '🦋 Хорнет одобряет! 🦋';
+    easterEgg.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #f39c12 0%, #e74c3c 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 15px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        z-index: 10000;
+        animation: easterEggPulse 2s ease;
+    `;
+
+    document.body.appendChild(easterEgg);
+
+    setTimeout(() => {
+        easterEgg.remove();
+    }, 3000);
+}
+
+// Add CSS animations dynamically
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideOutRight {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+
+    @keyframes easterEggPulse {
+        0%, 100% {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        50% {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+`;
+document.head.appendChild(style);
+
+// Performance optimization: Lazy loading for images
+const lazyImages = document.querySelectorAll('img[data-src]');
+const imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+            imageObserver.unobserve(img);
+        }
+    });
+});
+
+lazyImages.forEach(img => imageObserver.observe(img));
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('🦋 Silksong.ru загружен успешно!');
+
+    // Add loading animation completion
+    const loader = document.querySelector('.loader');
+    if (loader) {
+        setTimeout(() => {
+            loader.style.opacity = '0';
+            setTimeout(() => loader.remove(), 500);
+        }, 1000);
+    }
+});
+
+// Analytics tracking (placeholder)
+function trackEvent(eventName, eventData = {}) {
+    // Here you would integrate with your analytics service
+    console.log('Event tracked:', eventName, eventData);
+
+    // Example for Yandex.Metrika
+    if (typeof ym !== 'undefined') {
+        ym(12345678, 'reachGoal', eventName, eventData);
+    }
+}
+
+// Track important user interactions
+document.querySelectorAll('a, button').forEach(element => {
+    element.addEventListener('click', (e) => {
+        const elementText = e.target.textContent.trim();
+        const elementType = e.target.tagName.toLowerCase();
+
+        trackEvent('element_click', {
+            element_type: elementType,
+            element_text: elementText,
+            page_url: window.location.href
+        });
+    });
+});
