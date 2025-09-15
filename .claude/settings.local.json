@@ -3,7 +3,17 @@
     "allow": [
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)",
+      "Bash(curl:*)",
+      "Bash(sudo dd:*)",
+      "Bash(sudo chmod:*)",
+      "Bash(sudo tee:*)",
+      "Bash(sudo apt:*)",
+      "Bash(sudo apt install:*)",
+      "Bash(sudo -S apt:*)",
+      "Bash(gh:*)"
     ],
     "deny": [],
     "ask": []
