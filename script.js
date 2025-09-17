@@ -422,3 +422,178 @@ document.querySelectorAll('a, button').forEach(element => {
         });
     });
 });
+
+// Модальное окно для новостей
+const newsData = {
+    1: {
+        title: "Team Cherry показали новый геймплей Silksong",
+        content: `
+            <p><strong>15 сентября 2025 года</strong> стало историческим днем для всех фанатов Hollow Knight! Team Cherry наконец-то представили долгожданный 15-минутный геймплей-трейлер Hollow Knight: Silksong, который показал невероятные возможности игры и новые механики.</p>
+
+            <p>В новом видео мы увидели:</p>
+            <ul>
+                <li><strong>Улучшенную боевую систему Хорнет</strong> - более быстрые и акробатические движения, новые комбо-атаки</li>
+                <li><strong>Разнообразные локации королевства Фарлум</strong> - от мрачных пещер до ярких цветущих садов</li>
+                <li><strong>Новых уникальных врагов</strong> - более 20 различных типов противников в одном трейлере</li>
+                <li><strong>Систему крафта и улучшений</strong> - Хорнет может создавать новое снаряжение из найденных материалов</li>
+                <li><strong>Боссы невиданного масштаба</strong> - противники размером с целый экран!</li>
+            </ul>
+
+            <p>Особое внимание привлекли новые способности Хорнет: она может использовать свою иглу как крюк-кошку, создавать временные платформы из паутины и выполнять серию воздушных рывков.</p>
+
+            <p><strong>Кристофер Ларкин</strong>, композитор игры, также поделился фрагментами нового саундтрека, который звучит еще более эпично, чем в оригинальной Hollow Knight.</p>
+
+            <p>Team Cherry заявили, что это лишь малая часть того, что ждет игроков в полной версии игры!</p>
+        `
+    },
+    2: {
+        title: "Официальная дата выхода",
+        content: `
+            <p><strong>НАКОНЕЦ-ТО!</strong> После долгих лет ожидания Team Cherry официально объявили дату выхода Hollow Knight: Silksong.</p>
+
+            <p><strong>Игра выйдет 12 февраля 2026 года</strong> одновременно на всех заявленных платформах.</p>
+
+            <p>В официальном заявлении студии говорится:</p>
+            <p><em>"Мы понимаем, что фанаты ждали этой новости очень долго. Silksong - это не просто продолжение, это совершенно новый опыт, который мы создавали с особой тщательностью. Мы хотели убедиться, что каждая деталь игры соответствует нашим высоким стандартам качества."</em></p>
+
+            <p><strong>Что известно о релизе:</strong></p>
+            <ul>
+                <li><strong>Одновременный выход</strong> на PC, Nintendo Switch, PlayStation 5, Xbox Series X|S</li>
+                <li><strong>День первый в Game Pass</strong> - игра будет доступна подписчикам сразу после релиза</li>
+                <li><strong>Цена:</strong> $29.99 / 2499₽ в России</li>
+                <li><strong>Коллекционное издание</strong> с артбуком, саундтреком и фигуркой Хорнет</li>
+                <li><strong>Предзаказы</strong> откроются уже на следующей неделе</li>
+            </ul>
+
+            <p>Team Cherry также подтвердили, что владельцы оригинальной Hollow Knight получат <strong>10% скидку</strong> на покупку Silksong.</p>
+
+            <p>Ави Адар и Уильям Пеллен из Team Cherry: <em>"Спасибо за терпение. Silksong стоит каждого дня ожидания."</em></p>
+        `
+    },
+    3: {
+        title: "Silksong выйдет на всех платформах",
+        content: `
+            <p>Team Cherry подтвердили, что <strong>Hollow Knight: Silksong будет доступна на всех основных игровых платформах</strong> в день релиза без каких-либо эксклюзивных периодов.</p>
+
+            <p><strong>Подтвержденные платформы:</strong></p>
+            <ul>
+                <li><strong>PC (Steam, Epic Games Store, GOG)</strong> - с поддержкой Steam Deck</li>
+                <li><strong>Nintendo Switch</strong> - оптимизирована для портативного режима</li>
+                <li><strong>PlayStation 5</strong> - с поддержкой DualSense и 4K</li>
+                <li><strong>PlayStation 4</strong> - полная совместимость</li>
+                <li><strong>Xbox Series X|S</strong> - Smart Delivery и Quick Resume</li>
+                <li><strong>Xbox One</strong> - обратная совместимость</li>
+            </ul>
+
+            <p><strong>Технические особенности по платформам:</strong></p>
+
+            <p><strong>PlayStation 5:</strong></p>
+            <ul>
+                <li>Нативное разрешение 4K при 60 FPS</li>
+                <li>Поддержка тактильной отдачи DualSense</li>
+                <li>Мгновенная загрузка благодаря SSD</li>
+                <li>3D-звук в совместимых наушниках</li>
+            </ul>
+
+            <p><strong>Xbox Series X:</strong></p>
+            <ul>
+                <li>4K при 120 FPS в режиме производительности</li>
+                <li>Поддержка Auto HDR</li>
+                <li>Smart Delivery - автоматическая лучшая версия</li>
+                <li>Quick Resume для мгновенного возобновления</li>
+            </ul>
+
+            <p><strong>Nintendo Switch:</strong></p>
+            <ul>
+                <li>1080p в док-режиме, 720p в портативном</li>
+                <li>Стабильные 60 FPS</li>
+                <li>Оптимизированное управление для Joy-Con</li>
+                <li>Поддержка HD Rumble</li>
+            </ul>
+
+            <p><strong>PC:</strong></p>
+            <ul>
+                <li>Поддержка разрешений до 8K</li>
+                <li>Безлимитный FPS</li>
+                <li>Ультрашироие мониторы</li>
+                <li>Полная поддержка модификаций</li>
+            </ul>
+
+            <p>Также подтверждена <strong>кроссплатформенная синхронизация сохранений</strong> между всеми платформами!</p>
+        `
+    }
+};
+
+// Инициализация модального окна новостей
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('newsModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalContent = document.getElementById('modalContent');
+    const closeBtn = document.querySelector('.news-modal-close');
+    const readMoreBtns = document.querySelectorAll('.read-more');
+
+    // Открытие модального окна
+    readMoreBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const newsId = this.getAttribute('data-news-id');
+            const news = newsData[newsId];
+
+            if (news) {
+                modalTitle.textContent = news.title;
+                modalContent.innerHTML = news.content;
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Предотвращаем скролл страницы
+
+                // Трекинг события
+                trackEvent('news_modal_opened', { news_id: newsId, news_title: news.title });
+            }
+        });
+    });
+
+    // Закрытие модального окна
+    closeBtn.addEventListener('click', function() {
+        closeModal();
+    });
+
+    // Закрытие по клику на фон
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Закрытие по нажатию Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            closeModal();
+        }
+    });
+
+    function closeModal() {
+        const modalContent = modal.querySelector('.news-modal-content');
+        modalContent.style.animation = 'slideDownModal 0.3s ease-out forwards';
+
+        setTimeout(() => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            modalContent.style.animation = '';
+        }, 300);
+    }
+});
+
+// Добавляем анимацию закрытия в CSS
+const newsModalStyles = document.createElement('style');
+newsModalStyles.textContent = `
+    @keyframes slideDownModal {
+        from {
+            bottom: 20px;
+            opacity: 1;
+        }
+        to {
+            bottom: -100%;
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(newsModalStyles);

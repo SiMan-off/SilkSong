@@ -89,14 +89,7 @@
     <!-- Главный экран -->
     <section id="home" class="hero">
         <div class="hero-background">
-            <iframe id="youtube-bg"
-                    src="https://www.youtube.com/embed/PgUssv-fV7w?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&start=3600&end=7200&playlist=PgUssv-fV7w"
-                    frameborder="0"
-                    allow="autoplay; encrypted-media"
-                    allowfullscreen
-                    style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translate(-50%, -50%); z-index: -1;">
-            </iframe>
-            <img src="images/silksong-official-1.jpg" alt="Hollow Knight Silksong Backup" class="hero-bg-image-backup">
+            <img src="images/silksong-official-1.jpg" alt="Hollow Knight Silksong Background" class="hero-bg-image">
             <div class="animated-particles"></div>
             <div class="floating-elements">
                 <div class="floating-element floating-element-1"></div>
@@ -134,36 +127,36 @@
                 <article class="news-card featured">
                     <div class="news-image">
                         <img src="images/silksong-official-1.jpg" alt="Новость о Silksong">
-                        <span class="news-date">15 сентября 2024</span>
+                        <span class="news-date">15 сентября 2025</span>
                     </div>
                     <div class="news-content">
                         <h3>Team Cherry показали новый геймплей Silksong</h3>
                         <p>Разработчики поделились 15-минутным геймплеем, демонстрирующим новые способности Хорнет и исследование королевства Фарлум.</p>
-                        <a href="#" class="read-more">Читать далее →</a>
+                        <a href="#" class="read-more" data-news-id="1">Читать далее →</a>
                     </div>
                 </article>
 
                 <article class="news-card">
                     <div class="news-image">
                         <img src="images/silksong-official-2.jpg" alt="Дата выхода">
-                        <span class="news-date">10 сентября 2024</span>
+                        <span class="news-date">10 сентября 2025</span>
                     </div>
                     <div class="news-content">
                         <h3>Официальная дата выхода</h3>
                         <p>Наконец-то! Team Cherry объявили официальную дату релиза Hollow Knight: Silksong.</p>
-                        <a href="#" class="read-more">Читать далее →</a>
+                        <a href="#" class="read-more" data-news-id="2">Читать далее →</a>
                     </div>
                 </article>
 
                 <article class="news-card">
                     <div class="news-image">
                         <img src="images/silksong-official-3.jpg" alt="Платформы">
-                        <span class="news-date">5 сентября 2024</span>
+                        <span class="news-date">5 сентября 2025</span>
                     </div>
                     <div class="news-content">
                         <h3>Silksong выйдет на всех платформах</h3>
                         <p>Игра будет доступна на PC, Nintendo Switch, PlayStation и Xbox в день релиза.</p>
-                        <a href="#" class="read-more">Читать далее →</a>
+                        <a href="#" class="read-more" data-news-id="3">Читать далее →</a>
                     </div>
                 </article>
             </div>
@@ -251,12 +244,19 @@
                 </div>
 
                 <div class="tab-content" id="art">
-                    <div class="gallery">
-                        <div class="gallery-item">
-                            <img src="images/silksong-official-2.jpg" alt="Официальный концепт-арт королевства Фарлум">
+                    <div class="gallery art-gallery">
+                        <div class="gallery-row">
+                            <div class="gallery-item">
+                                <img src="https://images.squarespace-cdn.com/content/v1/606d4bb793879d12d807d4c8/1b547f53-e6f9-461e-b9df-0104e04726b5/new-bg.jpg" alt="Официальный концепт-арт королевства Фарлум">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="https://9to5toys.com/wp-content/uploads/sites/5/2025/08/Hollow-Knight-Silksong-official-release-date.jpg?w=700&h=500" alt="Дизайн персонажей и локаций">
+                            </div>
                         </div>
-                        <div class="gallery-item">
-                            <img src="images/silksong-official-3.jpg" alt="Дизайн персонажей и локаций">
+                        <div class="gallery-row">
+                            <div class="gallery-item gallery-item-single">
+                                <img src="https://static0.srcdn.com/wordpress/wp-content/uploads/2024/03/untitled-design-30-3.jpg" alt="Арт-дизайн и концепты Hollow Knight: Silksong">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -340,8 +340,8 @@
                     <h4>Полезные ссылки</h4>
                     <ul>
                         <li><a href="https://www.teamcherry.com.au/">Team Cherry</a></li>
-                        <li><a href="#">Hollow Knight Wiki</a></li>
-                        <li><a href="#">Reddit r/HollowKnight</a></li>
+                        <li><a href="https://hollowknight.fandom.com/wiki/Hollow_Knight_Wiki">Hollow Knight Wiki</a></li>
+                        <li><a href="https://www.reddit.com/r/HollowKnight/">Reddit r/HollowKnight</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -355,7 +355,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Silksong.ru. Все права защищены. Hollow Knight и Silksong являются торговыми марками Team Cherry.</p>
+                <p>&copy; 2025 Silksong.ru. Все права защищены. Hollow Knight и Silksong являются торговыми марками Team Cherry.</p>
             </div>
         </div>
     </footer>
@@ -365,6 +365,17 @@
         <div class="yandex-ad" id="yandex_rtb_R-A-123456-3">
             <!-- Здесь будет код Яндекс.Рекламы -->
             <div class="ad-placeholder">Реклама 728x90</div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для новостей -->
+    <div id="newsModal" class="news-modal">
+        <div class="news-modal-content">
+            <span class="news-modal-close">&times;</span>
+            <div class="news-modal-body">
+                <h3 id="modalTitle"></h3>
+                <div id="modalContent"></div>
+            </div>
         </div>
     </div>
 
